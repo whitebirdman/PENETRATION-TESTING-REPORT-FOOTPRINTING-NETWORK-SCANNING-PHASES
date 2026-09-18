@@ -163,7 +163,7 @@ Finally, I learned that reconnaissance and network scanning must always be condu
 
 
 👤 Author
-Ayisire Israel
+Ayisire I. Oghenechovwe
 
 Cybersecurity Intern
 
