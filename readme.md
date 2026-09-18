@@ -72,6 +72,7 @@ The example results provided in the practical identified four live hosts:
 - `10.0.0.0`
 - `10.0.0.3`
 - `10.0.0.7`
+  
 The example results also included one MAC addresses.
 
 After completing the scan, I opened the **Topology** section in Zenmap, enabled the legend and saved the network topology in PDF format as required by the practical task.
@@ -156,8 +157,8 @@ Finally, I learned that reconnaissance and network scanning must always be condu
 
 ![wafw00f output](wafw00f.png)
 
-![dnsrecon output](screenshots/7_zenmap.png)
+![dnsrecon output](nmap1.png)
 
-![Zenmap scan and topology](screenshots/8_zenmap2.png)
+![Zenmap scan and topology](nmaptop.png)
 
 -End-
