@@ -71,9 +71,7 @@ The example results provided in the practical identified four live hosts:
 
 - `10.0.0.0`
 - `10.0.0.3`
-- `10.0.0.4`
-- `10.0.0.6`
-
+- `10.0.0.7`
 The example results also included one MAC addresses.
 
 After completing the scan, I opened the **Topology** section in Zenmap, enabled the legend and saved the network topology in PDF format as required by the practical task.
