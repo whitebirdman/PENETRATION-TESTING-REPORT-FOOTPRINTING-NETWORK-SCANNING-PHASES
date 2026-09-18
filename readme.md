@@ -5,9 +5,9 @@
 
 | Field | Detail |
 |---|---|
-| **Pentester Name (Cybersecurity Professional)** | **Emmanuel Bafi** |
+| **Pentester Name (Cybersecurity Professional)** | **Ayisire I. Oghenechovwe** |
 | **Program/Batch** | B082-Networkwalks |
-| **Date** | 17 August 2026 |
+| **Date** | 17 September 2026 |
 | **Modules completed** | W2-PM1 (Multiple Kali Tools)<br>W2-PM5 (Zenmap Scanning) |
 | **Client/Target** | 1. Networkwalks (secured written permission already)<br>2. My own local LAN Network |
 | **Permission secured from client?** | Yes |
@@ -15,13 +15,17 @@
 
 # 1. Liability Disclaimer
 
-I have performed these activities only on the systems & devices where I had secured written permission or the devices/systems that I own myself. All these materials are for education and research purpose only. Do not use anything from here to break the law. The instructor, the authors and Networkwalks are not responsible for what you do with this knowledge. Every action you take is your own responsibility. Misuse can lead to criminal charges, heavy fines, loss of your job and a permanent record. In most countries unauthorised access is a crime even when nothing is damaged.
+All activities documented in this report were conducted exclusively on systems and devices that I own or for which I obtained prior written authorization to perform security testing. The information and materials presented are intended solely for educational and research purposes.
+This knowledge must not be used to gain unauthorized access to, disrupt, or compromise any system or device. Any actions taken based on the information contained in this report are the sole responsibility of the individual performing them. The instructor, authors, and Networkwalks assume no responsibility for any misuse of the knowledge or techniques presented.
+Unauthorized access to computer systems may constitute a criminal offense, even where no damage or disruption occurs. Such activities may result in criminal prosecution, substantial financial penalties, termination of employment, and a permanent criminal record. Users should therefore ensure that appropriate authorization is obtained before conducting any security testing.
+
 
 # 2. Introduction
 
-This report covers footprinting the networkwalks.com domain using multiple Kali Linux tools (W2-PM1) and scanning my own local network with Zenmap (W2-PM5). One module covers the footprinting phase and the other covers the scanning phase, so together they show how an attacker moves from gathering public information to mapping live hosts on a network. It is the Week 2 part of my ongoing internship program at Networkwalks.
+This report covers two activities completed during Week 2 of my ongoing internship program at Networkwalks. The first activity involved gathering information about the **networkwalks.com** domain using different Kali Linux tools (W2-PM1), while the second involved scanning my own local network using **Zenmap** (W2-PM5).
+The two activities focus on different stages of network security testing. The footprinting exercise shows how information can be collected about a target from publicly available sources, while the scanning exercise focuses on identifying live devices and hosts within a network. Together, they show the basic process of moving from information gathering to network discovery.
+The footprinting tasks were carried out in **Kali Linux**, while the scanning exercise was performed on a **Windows PC with Zenmap installed**. For each step, I included the command I used, the result I obtained, a screenshot as evidence, and a brief explanation of why the finding could be important from a security or attacker's point of view.
 
-All commands were run in Kali Linux (footprinting) and on a Windows PC with Zenmap installed (scanning). Every step below includes the exact command used, the result I observed, a screenshot as evidence, and a short note on why the finding matters from an attacker's point of view.
 
 # 3. Tools Used
 
@@ -47,7 +51,7 @@ I performed reconnaissance against the `networkwalks.com` domain using six Kali 
 
 First, I used **WHOIS** to obtain publicly available domain registration information and identify the domain’s name servers. The results provided information about the domain registration and hosting infrastructure.
 
-I then used **WhatWeb** to identify technologies used by the website. The results identified **WordPress 7.0.4** and **WP Download Manager 3.3.58**, along with other information exposed by the website.
+I then used **WhatWeb** to identify technologies used by the website. The results identified **WordPress 7.1** and **WP Download Manager 3.3.58**, along with other information exposed by the website.
 
 Using **Nslookup**, I resolved the domain name to its IP address. The provided result identified **192.232.216.135**.
 
@@ -65,16 +69,14 @@ I first used the Windows `ipconfig` command to identify my local IP address and 
 
 The example results provided in the practical identified four live hosts:
 
-- `10.0.0.1`
+- `10.0.0.0`
+- `10.0.0.3`
 - `10.0.0.4`
-- `10.0.0.19`
-- `10.0.0.5`
+- `10.0.0.6`
 
-The example results also included four MAC addresses.
+The example results also included one MAC addresses.
 
 After completing the scan, I opened the **Topology** section in Zenmap, enabled the legend and saved the network topology in PDF format as required by the practical task.
-
-**Note:** The actual subnet, number of hosts and addresses should be replaced with the results from my own network when submitting the report.
 
 # 5. Risk Analysis / Impact
 
@@ -99,48 +101,48 @@ Therefore, the presence of information such as a software version, IP address or
 
 # 6. Recommendations
 
-Based on the observations from these activities, I recommend the following security improvements:
+Based on the findings and observations from these activities, the following security improvements are recommended:
 
-1.  **Review publicly exposed technology information**  
-    Organizations should regularly review what information about their web technologies, CMS and plugins is publicly visible.
+1. **Review Publicly Exposed Technology Information**
+   Organizations should regularly assess the technical information publicly available about their websites, including details about CMS platforms, plugins, and other technologies in use.
 
-2.  **Keep software updated**  
-    CMS platforms, plugins and other web technologies should be regularly updated and reviewed against current security advisories.
+2. **Keep Software and Technologies Updated**
+   CMS platforms, plugins, and other web technologies should be kept up to date. Security advisories should also be monitored to identify and address known vulnerabilities.
 
-3.  **Review HTTP headers**  
-    HTTP response headers should be reviewed to determine whether unnecessary technical information is being exposed.
+3. **Review HTTP Response Headers**
+   HTTP response headers should be periodically reviewed to identify and minimize the exposure of unnecessary technical information that could assist an attacker.
 
-4.  **Review DNS records regularly**  
-    DNS records should be checked periodically to ensure that only required information and services are publicly exposed.
+4. **Regularly Review DNS Records**
+   DNS records should be reviewed regularly to ensure that only necessary services and information are publicly accessible.
 
-5.  **Properly configure and monitor the WAF**  
-    Keep the WAF (ModSecurity) enabled and tuned, since it already blocks naive attacks.
+5. **Properly Configure and Monitor the WAF**
+   The Web Application Firewall (WAF), including ModSecurity, should remain enabled, properly configured, and regularly tuned. Its existing ability to block basic or automated attacks should be maintained and monitored.
 
-6.  **Perform regular internal network discovery**  
-    Organizations should periodically scan their own networks to identify active devices.
+6. **Conduct Regular Internal Network Discovery**
+   Organizations should periodically scan their internal networks to identify active devices and maintain an accurate understanding of the network environment.
 
-7.  **Investigate unknown devices**  
-    Any unexpected device discovered during network scanning should be investigated and verified.
+7. **Investigate Unidentified Devices**
+   Any unfamiliar or unexpected device identified during network discovery should be investigated and verified to determine whether it is authorized.
 
-8.  **Maintain network documentation**  
-    Network topology and device information should be documented and updated regularly.
+8. **Maintain Accurate Network Documentation**
+   Network topology, connected devices, IP addresses, and other relevant infrastructure information should be properly documented and regularly updated.
 
-9.  **Perform security testing with authorization**  
-    Reconnaissance and scanning should only be performed against systems and networks where appropriate authorization has been provided.
+9. **Conduct Security Testing with Proper Authorization**
+   Reconnaissance, scanning, and other security testing activities should only be performed on systems and networks where appropriate authorization has been obtained.
 
 # 7. Conclusion
 
-During Week 2 of my Cybersecurity & Ethical Hacking internship, I completed practical activities covering footprinting, reconnaissance and network scanning.
+During Week 2 of my Cybersecurity & Ethical Hacking internship, I completed practical exercises focused on footprinting, reconnaissance, and network scanning.
 
-In the footprinting activity, I used six Kali Linux tools to collect information about the target domain. I learned how WHOIS can provide domain information, WhatWeb can identify web technologies, Nslookup can resolve domain names, Curl can inspect HTTP headers, Wafw00f can identify a WAF, and DNSRecon can provide additional DNS information.
+For the footprinting exercise, I used six Kali Linux tools to gather information about the target domain. Through this activity, I learned how **WHOIS** can be used to obtain domain registration information, **WhatWeb** can identify web technologies, **Nslookup** can resolve domain names and retrieve DNS information, **Curl** can be used to examine HTTP response headers, **Wafw00f** can help identify web application firewalls, and **DNSRecon** can provide additional information about DNS records and configurations.
 
-In the network scanning activity, I used Zenmap to identify my local network configuration and discover active hosts. I also collected IP and MAC address information and created a network topology.
+For the network scanning exercise, I used **Zenmap** to examine my local network configuration and identify active hosts. I also gathered available IP and MAC address information and used the results to create a basic network topology.
 
-The exercises showed me that information gathering is an important part of cybersecurity. Even before attempting to exploit a system, a security professional can learn a significant amount about an environment by carefully analyzing publicly available information and network responses.
+These exercises helped me understand the importance of information gathering in cybersecurity. Before attempting to identify or exploit vulnerabilities, a security professional can obtain valuable information about a target environment by analyzing publicly available data and observing network responses.
 
-I also learned that technical findings should be documented clearly. A good cybersecurity report should explain what was performed, what was discovered, what the observation means, what risk it may create, and what can be done to reduce that risk.
+I also learned the importance of properly documenting technical findings. An effective cybersecurity report should clearly explain the activities performed, the information discovered, the significance of each finding, the potential security implications, and the recommended measures for reducing associated risks.
 
-Finally, I learned that reconnaissance and scanning must always be performed within an authorized scope. These activities were completed as part of the assigned educational cybersecurity lab.
+Finally, I learned that reconnaissance and network scanning must always be conducted within an authorized scope. All activities documented in this report were performed as part of the assigned educational cybersecurity laboratory exercises.
 
 # 8. Evidences Collected
 
