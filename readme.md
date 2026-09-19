@@ -145,7 +145,7 @@ Finally, I learned that reconnaissance and network scanning must always be condu
 
 # 8. Evidences Collected
 
-*Screenshots collected as evidence during the activities (stored in the `screenshots/` folder):*
+*Screenshots collected as evidence during the activities:*
 
 ![whois output](whois.png)
 
