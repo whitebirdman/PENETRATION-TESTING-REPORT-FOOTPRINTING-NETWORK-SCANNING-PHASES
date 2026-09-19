@@ -167,6 +167,6 @@ Ayisire I. Oghenechovwe
 
 Cybersecurity Intern
 
-LinkedIn: https://www.linkedin.com/in/israel-chovwe-ayisire
+LinkedIn: https://www.linkedin.com/in/ayisire/
 
--End-
+The End
